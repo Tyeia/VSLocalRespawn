@@ -1,0 +1,13 @@
+{
+    "type": "code",
+    "modid": "localrespawn",
+    "name": "Local Respawns",
+    "authors": [
+        "DoodleGarbage"
+    ],
+    "description": "Respawns you a random number of blocks away from the point of your death.",
+    "version": "1.1.0",
+    "dependencies": {
+        "game": ""
+    }
+}
