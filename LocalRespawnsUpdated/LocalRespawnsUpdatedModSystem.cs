@@ -69,7 +69,7 @@ public class LocalRespawnsModSystem : ModSystem
 
     private void OnPlayerRespawn(IServerPlayer byPlayer)
     {
-        for (int i = 0; i < lastSpawnLocations.Count; i++)
+        /*for (int i = 0; i < lastSpawnLocations.Count; i++)
         {
             if (byPlayer == lastSpawnLocations[i].player) {
                 BlockPos surface_block = findFloor(byPlayer.Entity.ServerPos.AsBlockPos);
@@ -83,7 +83,7 @@ public class LocalRespawnsModSystem : ModSystem
                 lastSpawnLocations.RemoveAt(i);
                 break;
             }
-        }
+        }*/
     }
 
     private void OnChunkLoaded(Vec2i chunkCoord, IWorldChunk[] chunks)

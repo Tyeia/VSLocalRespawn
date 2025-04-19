@@ -6,7 +6,7 @@
         "DoodleGarbage"
     ],
     "description": "Respawns you a random number of blocks away from the point of your death.",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "dependencies": {
         "game": ""
     }
