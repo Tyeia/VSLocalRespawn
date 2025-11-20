@@ -88,7 +88,7 @@ public class LocalRespawnsModSystem : ModSystem
 
     private void OnChunkLoaded(Vec2i chunkCoord, IWorldChunk[] chunks)
     {
-        List<int> to_delete = new List<int>();
+        List<lastSpawnLocation> to_delete = new List<lastSpawnLocation>();
         for (int i = 0; i < lastSpawnLocations.Count; i++)
         {
             if (lastSpawnLocations[i].player.Entity.ServerPos.SquareDistanceTo(lastSpawnLocations[i].player.GetSpawnPosition(false)) < 0.25f) 
@@ -104,13 +104,13 @@ public class LocalRespawnsModSystem : ModSystem
                 lastSpawnLocations[i].player.Entity.TeleportToDouble(surf_block_double.X, surf_block_double.Y, surf_block_double.Z);
                 PlayerSpawnPos loc = new PlayerSpawnPos(lastSpawnLocations[i].position.X, lastSpawnLocations[i].position.Y, lastSpawnLocations[i].position.Z);
                 lastSpawnLocations[i].player.SetSpawnPosition(loc);
-                to_delete.Append(i);
+                to_delete.Append(lastSpawnLocations[i]);
                 break;
              }
         }
-        for (int i = to_delete.Count-1; i >= 0; i--)
+        for (int i = 0; i < to_delete.Count; i++)
         {
-            lastSpawnLocations.RemoveAt(i);
+            lastSpawnLocations.Remove(to_delete[i]);
         }
         
 
