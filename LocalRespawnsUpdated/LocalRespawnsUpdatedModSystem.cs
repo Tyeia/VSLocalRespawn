@@ -122,7 +122,7 @@ public class LocalRespawnsModSystem : ModSystem
 
         lastSpawnLocations.Add(playerData);
         //Mod.Logger.Notification("Uh oh! Player died! Trying to find floor!");
-        var loc = byPlayer.Entity.ServerPos;
+        var loc = byPlayer.Entity.Pos;
         Vec3i newLocation = GenerateSpawnLocation(loc);
         byPlayer.ClearSpawnPosition();
         byPlayer.SetSpawnPosition(new PlayerSpawnPos(newLocation.X, newLocation.Y, newLocation.Z));
@@ -152,11 +152,11 @@ public class LocalRespawnsModSystem : ModSystem
         List<lastSpawnLocation> to_delete = new List<lastSpawnLocation>();
         for (int i = 0; i < lastSpawnLocations.Count; i++)
         {
-            if (lastSpawnLocations[i].player.Entity.ServerPos.SquareDistanceTo(lastSpawnLocations[i].player.GetSpawnPosition(false)) < 0.25f) 
+            if (lastSpawnLocations[i].player.Entity.Pos.SquareDistanceTo(lastSpawnLocations[i].player.GetSpawnPosition(false)) < 0.25f) 
             {
                 //Mod.Logger.Notification("Tried to teleport the player!");
                 // Teleport the player to the ground, to counteract spawning in the ground.
-                BlockPos surface_block = findFloor(lastSpawnLocations[i].player.Entity.ServerPos.AsBlockPos);
+                BlockPos surface_block = findFloor(lastSpawnLocations[i].player.Entity.Pos.AsBlockPos);
                 if (surface_block == new BlockPos(0)){
                     //Mod.Logger.Notification("Failed to find floor. Try again later.");
                     continue;
